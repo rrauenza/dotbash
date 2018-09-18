@@ -7,23 +7,23 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-black_="\[\033[0;30m\]"
-blue_="\[\033[0;34m\]"
-green_="\[\033[0;32m\]"
-cyan_="\[\033[0;36m\]"
-red_="\[\033[0;31m\]"
-purple_="\[\033[0;35m\]"
-brown_="\[\033[0;33m\]"
-lightgray_="\[\033[0;37m\]"
-gray_="\[\033[1;30m\]"
-lightblue_="\[\033[1;34m\]"
-lightgreen_="\[\033[1;32m\]"
-lightcyan_="\[\033[1;36m\]"
-lightred_="\[\033[1;31m\]"
-lightpurple_="\[\033[1;35m\]"
-lightyellow_="\[\033[1;33m\]"
-white_="\[\033[1;37m\]"
-nocolor_="\[\033[0m\]"
+black_="\[\e[0;30m\]"
+blue_="\[\e[0;34m\]"
+green_="\[\e[0;32m\]"
+cyan_="\[\e[0;36m\]"
+red_="\[\e[0;31m\]"
+purple_="\[\e[0;35m\]"
+brown_="\[\e[0;33m\]"
+lightgray_="\[\e[0;37m\]"
+gray_="\[\e[1;30m\]"
+lightblue_="\[\e[1;34m\]"
+lightgreen_="\[\e[1;32m\]"
+lightcyan_="\[\e[1;36m\]"
+lightred_="\[\e[1;31m\]"
+lightpurple_="\[\e[1;35m\]"
+lightyellow_="\[\e[1;33m\]"
+white_="\[\e[1;37m\]"
+nocolor_="\[\e[0m\]"
 
 case `hostname -s` in
   rich-*) promptcolor_="$green_" ;;
@@ -59,15 +59,16 @@ if [ "$PS1" ]; then
             #export PROMPT_COMMAND='~/bin/crttitle --auto;'"$PROMPT_COMMAND"
             #export PROMPT_COMMAND="~/bin/crttitle `/usr/bin/id -un`@`/usr/bin/hostname -s`"\;"$PROMPT_COMMAND"
             #export PROMPT_COMMAND="echo -n ]\\;`/usr/bin/id -un`@`/usr/bin/hostname -s`"\;"$PROMPT_COMMAND"
-            #PS1="];`/usr/bin/id -un`@`/usr/bin/hostname -s`$PS1"
             PS1="\e];`/usr/bin/id -un`@`/usr/bin/hostname -s`\a$PS1"
             ;;
     esac
 fi
-set -o vi
-export PAGER=less
-. ~/.aliases
 
-source ~/.bash/git-completion.bash
+set -o vi
+
+export PAGER=less
+
+. ~/.aliases
+. ~/.bash/git-completion.bash
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
